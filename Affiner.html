@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiner Votre Recherche - Voitures de Luxe</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: right;
+            display: block;
+            color: #333;
+            text-align: center;
+            padding: 15px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #f4f4f4;
+            color: #1abc9c;
+        }
+
+
+        .filter-container {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .filter-label {
+            margin-right: 10px;
+        }
+
+        .car-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .car-item {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 220px;
+            text-align: center;
+            transition: background 0.3s;
+            background-color: white;
+        }
+
+        .car-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .car-item:hover {
+            background-color: #f4f4f4;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .search-container {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-label {
+            margin-right: 10px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Affiner Votre Recherche</h1>
+</div>
+<div class="navbar"></div>
+    <a href="Contact.html">Contact</a>
+    <a href="Après-vente.html">Après-vente</a>
+    <a href="Affiner.html">Affiner votre recherche</a>
+    <a href="Accueil.html">Accueil</a>
+</div>
+
+<div class="filter-container">
+    <div>
+        <label class="filter-label">Trier par :</label>
+        <select id="sortCriteria">
+            <option value="name">Nom</option>
+            <option value="price">Prix</option>
+        </select>
+        <button onclick="sortCars()">Trier</button>
+    </div>
+</div>
+
+<div class="search-container">
+    <label class="search-label">Rechercher par :</label>
+    <select id="searchCriteria">
+        <option value="name">Nom</option>
+        <option value="price">Prix</option>
+    </select>
+    <input type="text" id="searchInput" class="search-input" placeholder="Entrez votre recherche...">
+    <button onclick="searchCars()">Rechercher</button>
+</div>
+
+<div class="car-list" id="carList">
+    <!-- Voitures de luxe -->
+    <div class="car-item" data-name="Rolls-Royce Phantom" data-price="450000">
+        <img src="https://example.com/rolls-royce-phantom.jpg" alt="Rolls-Royce Phantom">
+        <h3>Rolls-Royce Phantom</h3>
+        <p>€450,000</p>
+    </div>
+    <div class="car-item" data-name="Rolls-Royce Cullinan" data-price="350000">
+        <img src="https://example.com/rolls-royce-cullinan.jpg" alt="Rolls-Royce Cullinan">
+        <h3>Rolls-Royce Cullinan</h3>
+        <p>€350,000</p>
+    </div>
+    <div class="car-item" data-name="Rolls-Royce Ghost" data-price="400000">
+        <img src="https://example.com/rolls-royce-ghost.jpg" alt="Rolls-Royce Ghost">
+        <h3>Rolls-Royce Ghost</h3>
+        <p>€400,000</p>
+    </div>
+    <div class="car-item" data-name="Rolls-Royce Wraith" data-price="320000">
+        <img src="https://example.com/rolls-royce-wraith.jpg" alt="Rolls-Royce Wraith">
+        <h3>Rolls-Royce Wraith</h3>
+        <p>€320,000</p>
+    </div>
+    <div class="car-item" data-name="Rolls-Royce Dawn" data-price="350000">
+        <img src="https://example.com/rolls-royce-dawn.jpg" alt="Rolls-Royce Dawn">
+        <h3>Rolls-Royce Dawn</h3>
+        <p>€350,000</p>
+    </div>
+    
+    <div class="car-item" data-name="Bentley Continental GT" data-price="220000">
+        <img src="https://example.com/bentley-continental-gt.jpg" alt="Bentley Continental GT">
+        <h3>Bentley Continental GT</h3>
+        <p>€220,000</p>
+    </div>
+    <div class="car-item" data-name="Bentley Flying Spur" data-price="250000">
+        <img src="https://example.com/bentley-flying-spur.jpg" alt="Bentley Flying Spur">
+        <h3>Bentley Flying Spur</h3>
+        <p>€250,000</p>
+    </div>
+    <div class="car-item" data-name="Bentley Bentayga" data-price="200000">
+        <img src="https://example.com/bentley-bentayga.jpg" alt="Bentley Bentayga">
+        <h3>Bentley Bentayga</h3>
+        <p>€200,000</p>
+    </div>
+    <div class="car-item" data-name="Bentley Mulsanne" data-price="350000">
+        <img src="https://example.com/bentley-mulsanne.jpg" alt="Bentley Mulsanne">
+        <h3>Bentley Mulsanne</h3>
+        <p>€350,000</p>
+    </div>
+    <div class="car-item" data-name="Bentley Bacalar" data-price="1500000">
+        <img src="https://example.com/bentley-bacalar.jpg" alt="Bentley Bacalar">
+        <h3>Bentley Bacalar</h3>
+        <p>€1,500,000</p>
+    </div>
+    
+    <div class="car-item" data-name="Maserati Quattroporte" data-price="100000">
+        <img src="https://example.com/maserati-quattroporte.jpg" alt="Maserati Quattroporte">
+        <h3>Maserati Quattroporte</h3>
+        <p>€100,000</p>
+    </div>
+    <div class="car-item" data-name="Maserati Levante" data-price="85000">
+        <img src="https://example.com/maserati-levante.jpg" alt="Maserati Levante">
+        <h3>Maserati Levante</h3>
+        <p>€85,000</p>
+    </div>
+    <div class="car-item" data-name="Maserati Ghibli" data-price="75000">
+        <img src="https://example.com/maserati-ghibli.jpg" alt="Maserati Ghibli">
+        <h3>Maserati Ghibli</h3>
+        <p>€75,000</p>
+    </div>
+    <div class="car-item" data-name="Maserati Alfieri" data-price="100000">
+        <img src="https://example.com/maserati-alfieri.jpg" alt="Maserati Alfieri">
+        <h3>Maserati Alfieri</h3>
+        <p>€100,000</p>
+    </div>
+    <div class="car-item" data-name="Maserati MC20" data-price="210000">
+        <img src="https://example.com/maserati-mc20.jpg" alt="Maserati MC20">
+        <h3>Maserati MC20</h3>
+        <p>€210,000</p>
+    </div>
+
+    <div class="car-item" data-name="Aston Martin DB11" data-price="205000">
+        <img src="https://example.com/aston-martin-db11.jpg" alt="Aston Martin DB11">
+        <h3>Aston Martin DB11</h3>
+        <p>€205,000</p>
+    </div>
+    <div class="car-item" data-name="Aston Martin Vantage" data-price="140000">
+        <img src="https://example.com/aston-martin-vantage.jpg" alt="Aston Martin Vantage">
+        <h3>Aston Martin Vantage</h3>
+        <p>€140,000</p>
+    </div>
+    <div class="car-item" data-name="Aston Martin DBS Superleggera" data-price="300000">
+        <img src="https://example.com/aston-martin-dbs-superleggera.jpg" alt="Aston Martin DBS Superleggera">
+        <h3>Aston Martin DBS Superleggera</h3>
+        <p>€300,000</p>
+    </div>
+    <div class="car-item" data-name="Aston Martin DBX" data-price="200000">
+        <img src="https://example.com/aston-martin-dbx.jpg" alt="Aston Martin DBX">
+        <h3>Aston Martin DBX</h3>
+        <p>€200,000</p>
+    </div>
+    <div class="car-item" data-name="Aston Martin Valhalla" data-price="800000">
+        <img src="https://example.com/aston-martin-valhalla.jpg" alt="Aston Martin Valhalla">
+        <h3>Aston Martin Valhalla</h3>
+        <p>€800,000</p>
+    </div>
+
+    <div class="car-item" data-name="Ferrari 488 GTB" data-price="250000">
+        <img src="https://example.com/ferrari-488-gtb.jpg" alt="Ferrari 488 GTB">
+        <h3>Ferrari 488 GTB</h3>
+        <p>€250,000</p>
+    </div>
+    <div class="car-item" data-name="Ferrari F8 Tributo" data-price="280000">
+        <img src="https://example.com/ferrari-f8-tributo.jpg" alt="Ferrari F8 Tributo">
+        <h3>Ferrari F8 Tributo</h3>
+        <p>€280,000</p>
+    </div>
+    <div class="car-item" data-name="Ferrari Roma" data-price="200000">
+        <img src="https://example.com/ferrari-roma.jpg" alt="Ferrari Roma">
+        <h3>Ferrari Roma</h3>
+        <p>€200,000</p>
+    </div>
+    <div class="car-item" data-name="Ferrari SF90 Stradale" data-price="450000">
+        <img src="https://example.com/ferrari-sf90-stradale.jpg" alt="Ferrari SF90 Stradale">
+        <h3>Ferrari SF90 Stradale</h3>
+        <p>€450,000</p>
+    </div>
+    <div class="car-item" data-name="Ferrari 812 Superfast" data-price="350000">
+        <img src="https://example.com/ferrari-812-superfast.jpg" alt="Ferrari 812 Superfast">
+        <h3>Ferrari 812 Superfast</h3>
+        <p>€350,000</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Vente de Véhicules de Luxe. Tous droits réservés.</p>
+</div>
+
+<script>
+    function sortCars() {
+        const carList = document.getElementById('carList');
+        const cars = Array.from(carList.getElementsByClassName('car-item'));
+        const criteria = document.getElementById('sortCriteria').value;
+
+        cars.sort((a, b) => {
+            if (criteria === 'name') {
+                return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
+            } else if (criteria === 'price') {
+                // Extraire les nombres du prix
+                const priceA = parseInt(a.getAttribute('data-price'));
+                const priceB = parseInt(b.getAttribute('data-price'));
+                return priceA - priceB; // Tri croissant
+            }
+        });
+
+        // Clear the existing list and append the sorted cars
+        carList.innerHTML = '';
+        cars.forEach(car => carList.appendChild(car));
+    }
+
+    function searchCars() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const searchCriteria = document.getElementById('searchCriteria').value;
+        const carItems = document.getElementsByClassName('car-item');
+
+        Array.from(carItems).forEach(car => {
+            const name = car.getAttribute('data-name').toLowerCase();
+            const price = car.getAttribute('data-price');
+
+            if (searchCriteria === 'name' && name.includes(searchInput) ||
+                searchCriteria === 'price' && price.includes(searchInput)) {
+                car.style.display = '';
+            } else {
+                car.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

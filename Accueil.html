@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Vente de Véhicules</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f3;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: right;
+            display: block;
+            color: #333;
+            text-align: center;
+            padding: 15px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #f4f4f4;
+            color: #1abc9c;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin: 20px auto;
+            height: 50vh;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .brand-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .brand-item {
+            position: relative;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .brand-item:hover {
+            background-color: #f4f4f4;
+        }
+
+        .model-list {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ddd;
+            z-index: 1;
+            width: 200px;
+            margin-top: 5px;
+        }
+
+        .model-item {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .model-item:hover {
+            background-color: #f4f4f4;
+        }
+
+        .vehicle-detail {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .vehicle-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        .test-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #1abc9c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .test-button:hover {
+            background-color: #16a085;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Vente de Véhicules</h1>
+    <p>Découvrez nos véhicules de marque</p>
+</div>
+
+<div class="navbar">
+    <a href="Contact.html">Contact</a>
+    <a href="Après-vente.html">Après-vente</a>
+    <a href="Affiner.html">Affiner votre recherche</a>
+    <a href="Accueil.html">Accueil</a>
+</div>
+
+<div class="carousel">
+    <div class="carousel-images" id="carouselImages">
+        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSPdS4_JubLnlAlo5zaw5aaQ1IqxqgC4tq4FYj4M6lbdnqriXJJWH5s7u1vzI_k" alt="Rolls-Royce Phantom">
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQYriZFNoT7XN_I3RXJ8eZMBdXKV_X4Cgy4uYriDNPsUc1zZhPw1uPidbvUAhEZ" alt="Rolls-Royce Ghost">
+        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRinvlwwcHG4CAUzMr68Kxduf3T656MYq_1nocfd1mygY8JCidpz-poQdEXCj40" alt="Bentley Continental GT">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTfYSAK38vMDq-HtsdNAv6haw1kRxomvofrYlcZzUbXO9BsRXD02F0fIOgmoiIp" alt="Bentley Bacalar">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQm1WyFIzYgFolxzAuWwT2cXhs-0DTTBMFr2DFHiXZryDL1WxgV9RhVCRXA5xxE" alt="Maserati Ghibli">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQnmmLJ1Y8UYK-2Jge2PV4qPJY67x9aMtD7cxUFeoD8CAXwGgAJJNY4x3IsZ_hT" alt="Ferrari 488 GTB">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRDluZqE44HIZIAZsGLB94M6WMDYzPsStvFc12piNMSnFOvyz5S6u22pYkVsWN5" alt="Ferrari SF90 Stradale">
+    </div>
+    <div class="carousel-buttons">
+        <button class="carousel-button" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-button" onclick="nextSlide()">&#10095;</button>
+    </div>
+</div>
+
+<div class="brand-list">
+    <div class="brand-item" onmouseover="showModels('rollsroyce')" onmouseout="hideModels('rollsroyce')">Rolls-Royce
+        <div class="model-list" id="rollsroyceModels">
+            <div class="model-item" onclick="showVehicle('rollsroyce', 'Phantom')">Phantom - €450,000</div>
+            <div class="model-item" onclick="showVehicle('rollsroyce', 'Cullinan')">Cullinan - €350,000</div>
+            <div class="model-item" onclick="showVehicle('rollsroyce', 'Ghost')">Ghost - €400,000</div>
+            <div class="model-item" onclick="showVehicle('rollsroyce', 'Wraith')">Wraith - €320,000</div>
+            <div class="model-item" onclick="showVehicle('rollsroyce', 'Dawn')">Dawn - €350,000</div>
+        </div>
+    </div>
+    <div class="brand-item" onmouseover="showModels('bentley')" onmouseout="hideModels('bentley')">Bentley
+        <div class="model-list" id="bentleyModels">
+            <div class="model-item" onclick="showVehicle('bentley', 'Continental GT')">Continental GT - €220,000</div>
+            <div class="model-item" onclick="showVehicle('bentley', 'Flying Spur')">Flying Spur - €250,000</div>
+            <div class="model-item" onclick="showVehicle('bentley', 'Bentayga')">Bentayga - €200,000</div>
+            <div class="model-item" onclick="showVehicle('bentley', 'Mulsanne')">Mulsanne - €350,000</div>
+            <div class="model-item" onclick="showVehicle('bentley', 'Bacalar')">Bacalar - €1,500,000</div>
+        </div>
+    </div>
+    <div class="brand-item" onmouseover="showModels('maserati')" onmouseout="hideModels('maserati')">Maserati
+        <div class="model-list" id="maseratiModels">
+            <div class="model-item" onclick="showVehicle('maserati', 'Quattroporte')">Quattroporte - €100,000</div>
+            <div class="model-item" onclick="showVehicle('maserati', 'Levante')">Levante - €85,000</div>
+            <div class="model-item" onclick="showVehicle('maserati', 'Ghibli')">Ghibli - €75,000</div>
+            <div class="model-item" onclick="showVehicle('maserati', 'Alfieri')">Alfieri - €100,000 (prévisionnel)</div>
+            <div class="model-item" onclick="showVehicle('maserati', 'MC20')">MC20 - €210,000</div>
+        </div>
+    </div>
+    <div class="brand-item" onmouseover="showModels('astonmartin')" onmouseout="hideModels('astonmartin')">Aston Martin
+        <div class="model-list" id="astonmartinModels">
+            <div class="model-item" onclick="showVehicle('astonmartin', 'DB11')">DB11 - €205,000</div>
+            <div class="model-item" onclick="showVehicle('astonmartin', 'Vantage')">Vantage - €140,000</div>
+            <div class="model-item" onclick="showVehicle('astonmartin', 'DBS Superleggera')">DBS Superleggera - €300,000</div>
+            <div class="model-item" onclick="showVehicle('astonmartin', 'DBX')">DBX - €200,000</div>
+            <div class="model-item" onclick="showVehicle('astonmartin', 'Valhalla')">Valhalla - €800,000 (prévisionnel)</div>
+        </div>
+    </div>
+    <div class="brand-item" onmouseover="showModels('ferrari')" onmouseout="hideModels('ferrari')">Ferrari
+        <div class="model-list" id="ferrariModels">
+            <div class="model-item" onclick="showVehicle('ferrari', '488 GTB')">488 GTB - €250,000</div>
+            <div class="model-item" onclick="showVehicle('ferrari', 'F8 Tributo')">F8 Tributo - €280,000</div>
+            <div class="model-item" onclick="showVehicle('ferrari', 'Roma')">Roma - €200,000</div>
+            <div class="model-item" onclick="showVehicle('ferrari', 'SF90 Stradale')">SF90 Stradale - €450,000</div>
+            <div class="model-item" onclick="showVehicle('ferrari', '812 Superfast')">812 Superfast - €350,000</div>
+        </div>
+    </div>
+</div>
+
+<div class="vehicle-detail" id="vehicleDetail">
+    <h2 id="vehicleTitle"></h2>
+    <img id="vehicleImage" class="vehicle-image" alt="Véhicule">
+    <p id="vehiclePrice"></p>
+    <a id="testButton" class="test-button" target="_blank" href="tester.html">Tester la voiture</a>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Vente de Véhicules. Tous droits réservés.</p>
+</div>
+
+<script>
+    let currentIndex = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelectorAll('.carousel-images img');
+        if (index >= slides.length) currentIndex = 0;
+        if (index < 0) currentIndex = slides.length - 1;
+
+        const offset = -currentIndex * 100;
+        document.getElementById('carouselImages').style.transform = 'translateX(' + offset + '%)';
+    }
+
+    function nextSlide() {
+        currentIndex++;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex--;
+        showSlide(currentIndex);
+    }
+
+    setInterval(nextSlide, 5000);
+
+    function showModels(brand) {
+        document.querySelectorAll('.model-list').forEach(list => {
+            list.style.display = 'none'; // Cacher toutes les listes de modèles
+        });
+        document.getElementById(brand + 'Models').style.display = 'block'; // Afficher la liste de modèles de la marque survolée
+    }
+
+    function hideModels(brand) {
+        document.getElementById(brand + 'Models').style.display = 'none'; // Cacher la liste de modèles
+    }
+
+    function showVehicle(brand, model) {
+        const vehicles = {
+            rollsroyce: {
+                Phantom: { price: '€450,000', image: 'https://via.placeholder.com/400x200?text=Rolls-Royce+Phantom', testLink: 'tester.html' },
+                Cullinan: { price: '€350,000', image: 'https://via.placeholder.com/400x200?text=Rolls-Royce+Cullinan', testLink: 'tester.html' },
+                Ghost: { price: '€400,000', image: 'https://via.placeholder.com/400x200?text=Rolls-Royce+Ghost', testLink: 'tester.html' },
+                Wraith: { price: '€320,000', image: 'https://via.placeholder.com/400x200?text=Rolls-Royce+Wraith', testLink: 'tester.html' },
+                Dawn: { price: '€350,000', image: 'https://via.placeholder.com/400x200?text=Rolls-Royce+Dawn', testLink: 'tester.html' },
+            },
+            bentley: {
+                'Continental GT': { price: '€220,000', image: 'https://via.placeholder.com/400x200?text=Bentley+Continental+GT', testLink: 'tester.html' },
+                'Flying Spur': { price: '€250,000', image: 'https://via.placeholder.com/400x200?text=Bentley+Flying+Spur', testLink: 'tester.html' },
+                Bentayga: { price: '€200,000', image: 'https://via.placeholder.com/400x200?text=Bentley+Bentayga', testLink: 'tester.html' },
+                Mulsanne: { price: '€350,000', image: 'https://via.placeholder.com/400x200?text=Bentley+Mulsanne', testLink: 'tester.html' },
+                Bacalar: { price: '€1,500,000', image: 'https://via.placeholder.com/400x200?text=Bentley+Bacalar', testLink: 'tester.html' },
+            },
+            maserati: {
+                Quattroporte: { price: '€100,000', image: 'https://via.placeholder.com/400x200?text=Maserati+Quattroporte', testLink: 'tester.html' },
+                Levante: { price: '€85,000', image: 'https://via.placeholder.com/400x200?text=Maserati+Levante', testLink: 'tester.html' },
+                Ghibli: { price: '€75,000', image: 'https://via.placeholder.com/400x200?text=Maserati+Ghibli', testLink: 'tester.html' },
+                Alfieri: { price: '€100,000', image: 'https://via.placeholder.com/400x200?text=Maserati+Alfieri', testLink: 'tester.html' },
+                MC20: { price: '€210,000', image: 'https://via.placeholder.com/400x200?text=Maserati+MC20', testLink: 'tester.html' },
+            },
+            astonmartin: {
+                DB11: { price: '€205,000', image: 'https://via.placeholder.com/400x200?text=Aston+Martin+DB11', testLink: 'tester.html' },
+                Vantage: { price: '€140,000', image: 'https://via.placeholder.com/400x200?text=Aston+Martin+Vantage', testLink: 'tester.html' },
+                'DBS Superleggera': { price: '€300,000', image: 'https://via.placeholder.com/400x200?text=Aston+Martin+DBS', testLink: 'tester.html' },
+                DBX: { price: '€200,000', image: 'https://via.placeholder.com/400x200?text=Aston+Martin+DBX', testLink: 'tester.html' },
+                Valhalla: { price: '€800,000', image: 'https://via.placeholder.com/400x200?text=Aston+Martin+Valhalla', testLink: 'tester.html' },
+            },
+            ferrari: {
+                '488 GTB': { price: '€250,000', image: 'https://via.placeholder.com/400x200?text=Ferrari+488+GTB', testLink: 'tester.html' },
+                'F8 Tributo': { price: '€280,000', image: 'https://via.placeholder.com/400x200?text=Ferrari+F8+Tributo', testLink: 'tester.html' },
+                Roma: { price: '€200,000', image: 'https://via.placeholder.com/400x200?text=Ferrari+Roma', testLink: 'tester.html' },
+                'SF90 Stradale': { price: '€450,000', image: 'https://via.placeholder.com/400x200?text=Ferrari+SF90+Stradale', testLink: 'tester.html' },
+                '812 Superfast': { price: '€350,000', image: 'https://via.placeholder.com/400x200?text=Ferrari+812+Superfast', testLink: 'tester.html' },
+            }
+        };
+
+        const vehicle = vehicles[brand][model];
+        if (vehicle) {
+            document.getElementById('vehicleTitle').textContent = `${model} (${brand})`;
+            document.getElementById('vehiclePrice').textContent = vehicle.price;
+            document.getElementById('vehicleImage').src = vehicle.image;
+            document.getElementById('testButton').href = vehicle.testLink;
+            document.getElementById('vehicleDetail').style.display = 'block';
+        }
+    }
+</script>
